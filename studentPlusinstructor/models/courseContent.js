@@ -8,8 +8,8 @@ var courseContentSchema = new Schema(
   {
     info: {type: String, required: true, max: 1000, min: 100},
     videoId: {type: String, required: true},
-    courseId: {type: Schema.Types.ObjectId, required: true, max:1},
-    batchId: {type: Schema.Types.ObjectId}
+    courseId: {type: Schema.Types.ObjectId, required: true, max:1, ref: "course"},
+    batchId: {type: Schema.Types.ObjectId, ref: "batch"}
   }
 );
 
@@ -19,4 +19,4 @@ courseContentSchema
   return '/courseContent/' + this._id;
 });
 
-module.exports = mongoose.model('courseContent');
+module.exports = mongoose.model('courseContent', courseContentSchema);

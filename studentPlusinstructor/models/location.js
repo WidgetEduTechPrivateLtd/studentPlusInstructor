@@ -18,4 +18,4 @@ var locationSchema = new Schema(
 );
 
 //export location model
-module.exports = mongoose.model('location');
+module.exports = mongoose.model('location', locationSchema);

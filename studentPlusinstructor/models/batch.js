@@ -6,11 +6,11 @@ var Schema = mongoose.Schema;
 
 var batchSchema = new Schema(
   {
-    startdate: {type: Date, required: true},
-    endDate: {type: Date, required: true},
-    totalLecture: {type: Number, required: true, min: 1},
-    extraClassAllowed: {type: Number, required: true, min: 0},
-    courseId: {type: Schema.Types.ObjectId, required: true, min: 1},
+    batchStartDate: {type: Date, required: true},
+    batchEndDate: {type: Date, required: true},
+    totalLecture: {type: Number, required: true, min: 1, trim: true},
+    extraClassAllowed: {type: Number, required: true, min: 0, trim: true},
+    courseId: {type: Schema.Types.ObjectId, required: true, min: 1, ref: "course"},
     schedule: {type: String, required: true, enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], min: 1, max: 7},
     timing: {type: String, required: true, min: 1}
   }
@@ -22,4 +22,4 @@ batchSchema
   return '/batch='+this._id+'/';
 });
 
-module.exports = mongoose.model('batch');
+module.exports = mongoose.model('batch', batchSchema);

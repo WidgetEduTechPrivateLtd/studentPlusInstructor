@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel="shortcut icon" href="logoFav.ico" type="image/x-icon">
+<link rel="icon" href="logoFav.ico" type="image/x-icon">
+      <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+  <div class="grid-container">
+  <header>
+    <!--topnav like mashable,com-->
+    <a id="logo" href="#"><img src="headerLogo.png" alt="WidgetEduTech Logo"></a>
+    <a href="#">Home</a>
+    <a href="#">Course Structure</a>
+    <a href="#">Our Demo</a>
+    <a href="#">About Us</a>
+  </header>
+
+  <div class="main">
+    <div class="register-form">
+      <div class="main-div">
+        <div class="panel">
+          <h2>Register</h2>
+          <!--
+          <p>Please enter your email and Password</p>  -->
+        </div>
+        <form id="register" method="post" action="/newUserRegister">
+          <div class="form-group labels"><label for="username">Username:</label></div>
+          <div class="form-group inputs"><input type="text" name="username" class="form-control" placeholder="username"></div>
+          <div class="form-group labels"><label for="email">Email:</label></div>
+          <div class="form-group">
+            <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Email Address">
+          </div>
+          <div class="form-group labels"><label for="emailConfirm">Confirm Email:</label></div>
+          <div class="form-group">
+            <input type="email" name="emailConfirm" class="form-control" id="inputEmail" placeholder="Enter Email Address again">
+          </div>
+          <div class="form-group labels"><label for="password">Password:</label></div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+          </div>
+          <div class="form-group labels"><label for="mobileNumber">Mobile Number:</label></div>
+          <div class="form-group">
+            <input type="text" name="mobileNumber" class="form-control" id="inputEmail" placeholder="Enter mobile number with country code">
+          </div>
+          <div class="login">
+            <a href="/login">Already registered? Login here</a>
+          </div>
+          <button type="submit" class="btn btn-primary">Register</button>
+
+
+        </form>
+        </div>
+      </div>
+    </div>
+
+
+  <div class="botNav">
+    <a href="#">Our Blog</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="footer">
+    ALL RIGHTS RESERVED
+  </div>
+</div>
+
+
+
+</body>
+
+</html>
