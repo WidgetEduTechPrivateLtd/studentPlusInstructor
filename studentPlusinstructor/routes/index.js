@@ -1,9 +1,21 @@
 var express = require('express');
 var router = express.Router();
-
+var indexController = require('../controllers/indexController.js');
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/',  indexController.home_get );
+
+router.get('/login', indexController.login_get );
+
+router.post('/login', indexController.login_post);
+
+router.get('/register', indexController.register_get);
+
+router.post('/register', indexController.register_post);
+
+router.get('/courses', indexController.courseStructure);
+
+router.get('/settings', indexController.settings);
+
+router.get('/ping', indexController.ping);
 
 module.exports = router;
