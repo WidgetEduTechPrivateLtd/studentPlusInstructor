@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 var passportLocalMongoose = require('passport-local-mongoose');
+var Schema = mongoose.Schema;
 
-var UserSchema = new mongoose.Schema(
+var UserSchema = new Schema(
   {
-    email: {type: String, required: true, trim: true, unique: true },
+    email: {type: String, required: true, trim: true, unique: true},
     userType: {type: String, enum: ['student', 'instructor', 'admin'], required: true},
     password: {type: String},
     emailValid: {type: Boolean},

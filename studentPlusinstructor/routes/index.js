@@ -10,11 +10,13 @@ router.post('/login', indexController.login_post);
 
 router.get('/register', indexController.register_get);
 
-router.post('/register', indexController.register_post);
+router.post('/newUserRegister', indexController.newUserRegister_post);
 
 router.get('/courses', indexController.courseStructure);
 
-router.get('/settings', indexController.settings);
+//router.get('/settings', indexController.settings);
+
+router.get('/logout', indexController.logout);
 
 router.get('/ping', indexController.ping);
 
