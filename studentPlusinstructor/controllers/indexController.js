@@ -137,7 +137,7 @@ exports.login_post = function(req, res) {
       req.flash('error', 'Sorry, No user exists with email '+req.params.email);
       res.redirect('/login');
     }
-    req.flash("success", "Hi User "+ foundUser.email);
+    req.flash("success", "Hi User");
     res.redirect("/");
   });
 };
