@@ -19,6 +19,18 @@ var transporter = nodemailer.createTransport({
   }
 });
 
+function randomString() {
+  var randomstring = [];
+  var possible = "QWERTYUIOPLKJHGFDSAZXCVBNM1234567890qwertyuioplkjhgfdsazxcvbnm";
+
+  for (var i=0; i<8; i++) {
+    newChar = possible.charAt(Math.floor(Math.random() * possible.length));
+    randomstring.push(newChar);
+  }
+  return randomstring.join('');
+  //console.log(randomstring);
+};
+
 
 function sendEmailValidate(email, validateString)
 {
@@ -85,7 +97,7 @@ exports.newUserRegister_post = function(req, res){
     }
   );
   console.log("Student initiated" + newStudent);
-  var randomString = function(){
+  /*var randomString = function(){
   var chars = "01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
   var string_length = 8;
   var randomString = '';
@@ -94,7 +106,7 @@ exports.newUserRegister_post = function(req, res){
     randomstring += chars.substring(rnum, rnum+1);
   }
   return randomstring;
-};
+};*/
   console.log("" + newUser.email + "    " +req.body.password)
   user.register(newUser, req.body.password, function(err, user){
     if(err){
@@ -104,8 +116,7 @@ exports.newUserRegister_post = function(req, res){
     }
     passport.authenticate("local")(req, res, function(){
       sendEmailValidate(req.body.email, randomString());
-
-      req.flash("success", "Successfully registered! Nice to meet you "+ req.body.email);
+      req.flash("success ", "Successfully registered! Nice to meet you "+ req.body.email);
       res.redirect("/");
     });
   });
