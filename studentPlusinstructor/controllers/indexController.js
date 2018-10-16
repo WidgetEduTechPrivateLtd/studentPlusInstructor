@@ -19,6 +19,7 @@ var transporter = nodemailer.createTransport({
   }
 });
 
+
 function randomString() {
   var randomstring = [];
   var possible = "QWERTYUIOPLKJHGFDSAZXCVBNM1234567890qwertyuioplkjhgfdsazxcvbnm";
@@ -97,7 +98,11 @@ exports.newUserRegister_post = function(req, res){
     }
   );
   console.log("Student initiated" + newStudent);
+
   /*var randomString = function(){
+
+  var randomString = function(){
+
   var chars = "01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
   var string_length = 8;
   var randomString = '';
@@ -106,7 +111,11 @@ exports.newUserRegister_post = function(req, res){
     randomstring += chars.substring(rnum, rnum+1);
   }
   return randomstring;
+
 };*/
+
+};
+
   console.log("" + newUser.email + "    " +req.body.password)
   user.register(newUser, req.body.password, function(err, user){
     if(err){
