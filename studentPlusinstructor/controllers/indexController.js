@@ -8,32 +8,23 @@ var nodemailer = require("nodemailer");
 var mongoose = require("mongoose");
 
 var transporter = nodemailer.createTransport({
-  // example with google mail service
-  host: 'stmp.gmail.com',
+  //debug: true,
+  /*host: 'stmp.yahoo.com',
   port: 587,
-  secure: false, //true for 465, false for other ports
+  secure: false, //true for 465, false for other ports*/
+  service: 'Yahoo',
   auth: {
-    user: 'shreyanshdixit.2412@gmail.com',
-    pass: 'c2T1$MSfOnOcV89Zl8Y@'
+    user: 'shreyanshdixit204@yahoo.com',
+    pass: 'Co52j^eKCG'
   }
 });
 
-function randomString(){
-  var chars = "01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-  var string_length = 8;
-  var randomString = '';
-  for (var i=0; i<string_length; i++) {
-    var rnum = Math.floor(Math.random() * chars.length);
-    randomstring += chars.substring(rnum, rnum+1);
-  }
-  return randomstring;
-};
 
 function sendEmailValidate(email, validateString)
 {
-  console.log(email);
+  console.log("Send Mesg started" + email);
   var mailOptions = {
-    from: 'nikerocking@gmail.com',
+    from: 'shreyanshdixit204@yahoo.com',
     to: email,
     subject: 'Email Verification - WidgetEduTech',
     /*
@@ -42,7 +33,7 @@ function sendEmailValidate(email, validateString)
     */
 
     // html body
-    html: 'The mail has been sent from Node.js application! '+validateString+'</p>'
+    html: 'The mail has been sent from Node.js application! '+ validateString + '</p>'
   };
 
 transporter.sendMail(mailOptions, (error, info) => {
@@ -77,20 +68,35 @@ exports.register_get = function(req, res) {
 };
 
 exports.newUserRegister_post = function(req, res){
+	console.log("Method started" + req);
   var newUser = new user(
     {
       email: req.body.emailConfirm,
       userType: "student",
-      emailValid: false
+      emailValid: false,
+	    username: req.body.username
   });
-  /*var newStudent = new student(
+  console.log("User Initiated " + newUser);
+  var newStudent = new student(
     {
       user: newUser._id,
       fullName: req.body.fullName,
       mobileNumber: req.body.mobileNumber
     }
-  );*/
-  user.register(newUser.email, req.body.password, function(err, user){
+  );
+  console.log("Student initiated" + newStudent);
+  var randomString = function(){
+  var chars = "01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+  var string_length = 8;
+  var randomString = '';
+  for (var i=0; i<string_length; i++) {
+    var rnum = Math.floor(Math.random() * chars.length);
+    randomstring += chars.substring(rnum, rnum+1);
+  }
+  return randomstring;
+};
+  console.log("" + newUser.email + "    " +req.body.password)
+  user.register(newUser, req.body.password, function(err, user){
     if(err){
       console.log(err);
       res.flash('error', {error: error.message});
@@ -111,9 +117,9 @@ exports.login_post = function(req, res) {
     if(err || !foundUser){
       console.log(err);
       req.flash('error', 'Sorry, No user exists with email '+req.params.email);
-      req.redirect('/login');
+      res.redirect('/login');
     }
-    req.flash("success", "Hi User "+foundUser.email);
+    req.flash("success", "Hi User "+ foundUser.email);
     res.redirect("/");
   });
 };
