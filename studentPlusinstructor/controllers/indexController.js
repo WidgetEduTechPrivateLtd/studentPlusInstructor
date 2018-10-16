@@ -114,8 +114,6 @@ exports.newUserRegister_post = function(req, res){
 
 };*/
 
-};
-
   console.log("" + newUser.email + "    " +req.body.password)
   user.register(newUser, req.body.password, function(err, user){
     if(err){
