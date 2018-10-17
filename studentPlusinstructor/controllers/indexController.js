@@ -142,6 +142,8 @@ exports.login_post = function(req, res) {
   });
 };
 
+
+
 exports.courseStructure = function(req, res) {
   res.render('courseStructure');
 };

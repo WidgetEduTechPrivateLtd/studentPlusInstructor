@@ -96,6 +96,10 @@ header #logo img {
   text-decoration: none;
 }
 
+.botNav>#registerInstructor {
+  float: right;
+}
+
 .footer {
   grid-area: footer;
   text-align: center;
