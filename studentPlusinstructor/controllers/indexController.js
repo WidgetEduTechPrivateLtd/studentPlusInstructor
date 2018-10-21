@@ -81,7 +81,6 @@ exports.register_get = function(req, res) {
 };
 
 exports.newUserRegister_post = function(req, res){
-	console.log("Method started" + req);
   var newUser = new user(
     {
       email: req.body.emailConfirm,
@@ -129,19 +128,30 @@ exports.newUserRegister_post = function(req, res){
   });
 };
 
-exports.login_post = function(req, res) {
-  passport.authenticate("local", {failureRedirect: '/login' });
-  var foundUser = user.findOne({email: req.body.email}).populate("foundUser").exec(function(err, foundUser){
-    if(err || !foundUser){
-      console.log(err);
-      req.flash('error', 'Sorry, No user exists with email '+req.params.email);
-      res.redirect('/login');
-    }
-    req.flash("success", "Hi User");
-    res.redirect("/");
-  });
-};
+exports.login_post = function (req,res) {
+	console.log("method started");
+	console.log(req.body.username);
+	passport.authenticate("local",  {
+                                   failureRedirect: '/login' }),
+								   function getUser (req, res){
+		 var foundUser = user.findOne({userName : req.body.username}).populate("foundUser").exec(function(err, foundUser){
+        if(err || !foundUser){
+            console.log(err);
+            req.flash('error', 'Sorry, No User exists with UserName ' + req.params.username);
+            res.redirect('/login', {error : 'Sorry, No User exists with UserName '});
+        }
+        /*if(foundUser.verified === false )
+		{
+			console.log("User not verified later!");
+			return res.render("verify", {username: foundUser.username});
 
+		}*/
+
+		req.flash("success", "Hi User " + foundUser.username);
+        res.redirect("/homePage");
+    });
+}
+};
 exports.courseStructure = function(req, res) {
   res.render('courseStructure');
 };
