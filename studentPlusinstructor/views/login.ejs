@@ -1,73 +1,28 @@
-<!DOCTYPE html>
-<html lang="en" >
-
-<head>
-  <meta charset="UTF-8">
-  <title>Login Widget EduTech</title>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
-  <% include ./partials/icons %>
-  <link rel="stylesheet" href="stylesheets/login.css">
-</head>
-
-<body>
-
-  <div class="grid-container">
-  <header>
-    <!--topnav like mashable,com-->
-    <a id="logo" href="/"><img src="images/headerLogo.png" alt="WidgetEduTech Logo"></a>
-    <a href="/">Home</a>
-    <a href="/courses">Course Structure</a>
-    <a href="#">Our Demo</a>
-    <a href="#">About Us</a>
-  </header>
-
-  <div class="main">
+<% include ./partials/header %>
     <div class="login-form">
-      <div class="main-div">
-        <div class="panel">
-          <h2>Login</h2>
-          <p>Please enter your email and Password</p>
-        </div>
-        <form id="login" method="post" target="/login">
-          <div class="form-group">
-            <input type="email" class="form-control" id="inputEmail" placeholder="Email Address">
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-          </div>
-          <div class="forgot">
-            <a href="/forgot">Forgot password?</a>
-          </div>
-          <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-        <hr>
-        <h2>OR</h2>
-        <hr>
-        <button class="loginBtn loginBtn--facebook">Login with Facebook</button>
-        <button class="loginBtn loginBtn--google">Login with Google</button>
+		<div class="main-div">
+			<div class="panel">
+				<h2>Login</h2>
+				<p>Please enter your email and Password</p>
+			</div>
+			<form action="/login" method="post">
+					<div class="form-group">
+						<input class="form-control" type="text" name="username" placeholder="username">
+					</div>
+					<div class="form-group">
+						<input class="form-control" type="password" name="password" placeholder="password">
+					</div>
+					<div class="form-group">
+						<button class="btn btn-lg btn-primary btn-block">Login</button>
+					</div>
+			</form>
+			<hr>
+				<h2>OR</h2>
+			<hr>
+			<button class="loginBtn loginBtn--facebook">Login with Facebook</button>
+			<button class="loginBtn loginBtn--google">Login with Google</button>
 
         </div>
       </div>
-    </div>
 
-
-  <div class="botNav">
-    <a href="#">Our Blog</a>
-    <a href="#">Contact</a>
-    <a href="/student/registerInstructor" id="registerInstructor">An instructor? Join us!</a>
-  </div>
-  <div class="footer">
-    ALL RIGHTS RESERVED
-  </div>
-</div>
-
-
-
-</body>
-
-</html>
+	<% include ./partials/footer %>

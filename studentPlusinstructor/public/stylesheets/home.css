@@ -4,6 +4,9 @@ header {
   height: 100%;
   text-align: center;
 }
+body {
+    background-color:  #d9d9d9;
+}
 
 header a {
   display: block;
@@ -67,10 +70,6 @@ header #logo img {
   background-color: #a6a6a6;
   color: white;
   text-decoration: none;
-}
-
-.botNav>#registerInstructor {
-  float: right;
 }
 
 footer {

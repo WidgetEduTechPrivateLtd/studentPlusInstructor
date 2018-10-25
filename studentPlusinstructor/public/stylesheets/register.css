@@ -97,10 +97,6 @@ header #logo img {
   text-decoration: none;
 }
 
-.botNav>#registerInstructor {
-  float: right;
-}
-
 .footer {
   grid-area: footer;
   text-align: center;
@@ -112,13 +108,6 @@ header #logo img {
   padding-bottom: 3px;
 }
 
-.main {
-  grid-area: main;
-  background: url('https://raw.githubusercontent.com/Zircoz/Student-Portal/master/src/s2.jpg') no-repeat center fixed;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-}
 
 .main .panel h2 {color: #444444; font-size: 18px; margin: 0 0 8px 0;}
 
