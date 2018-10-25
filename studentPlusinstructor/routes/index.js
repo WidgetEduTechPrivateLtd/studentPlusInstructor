@@ -1,12 +1,33 @@
 var express = require('express');
 var router = express.Router();
+var passport = require("passport");
+var User = require("../models/user");
 var indexController = require('../controllers/indexController.js');
 /* GET home page. */
 router.get('/',  indexController.home_get );
 
 router.get('/login', indexController.login_get );
 
-router.post('/login', indexController.login_post);
+//handling login logic
+router.post("/login", passport.authenticate("local",  {
+                                   failureRedirect: '/login' }), function(req, res){
+		 var foundUser = User.findOne({username : req.body.username}).populate("foundUser").exec(function(err, foundUser){
+        if(err || !foundUser){
+            console.log(err);
+            //req.flash('error', 'Sorry, No User exists with UserName ' + req.params.username);
+            res.redirect('/login', {error : 'Sorry, No User exists with UserName '});
+        }
+        /*if(foundUser.verified === false )
+		{
+			console.log("User not verified later!");
+			return res.render("verify", {username: foundUser.username});
+
+		}*/
+
+		//req.flash("success", "Hi User " + foundUser.username);
+        res.redirect("/");
+    });
+});
 
 router.get('/register', indexController.register_get);
 

@@ -43,6 +43,8 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(__dirname + "/public"));
 app.use('/student', express.static(__dirname + "/public"));
 passport.use(new LocalStrategy(user.authenticate()));
