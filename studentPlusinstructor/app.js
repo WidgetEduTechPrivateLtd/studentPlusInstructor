@@ -12,7 +12,7 @@ var session = require('express-session');
 var flash = require('connect-flash');
 
 mongoose.Promise = global.Promise;
-var mongoDB = 'mongodb://app:abracadabra123@ds225382.mlab.com:25382/studentplusinstructor';
+var mongoDB = 'mongodb://zircoz:oN6^^1lQg!No5JG@ds225382.mlab.com:25382/studentplusinstructor';
 mongoose.connect(mongoDB, { useNewUrlParser: true }).then(() => console.log('Database connected')).catch(err => console.log('Database connection error: ${err.message}'));
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error: '));
@@ -22,6 +22,7 @@ var user = require("./models/user");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var studentRouter = require('./routes/studentRoutes');
+var instructorRouter = require('./routes/instructorRoutes');
 
 var app = express();
 
@@ -47,6 +48,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(__dirname + "/public"));
 app.use('/student', express.static(__dirname + "/public"));
+app.use('/instructor', express.static(__dirname + "/public"));
 passport.use(new LocalStrategy(user.authenticate()));
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
@@ -62,7 +64,7 @@ app.use(function(req, res, next){
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/student', studentRouter);
-
+app.use('/instructor', instructorRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

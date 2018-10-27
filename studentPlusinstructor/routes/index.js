@@ -10,12 +10,10 @@ router.get('/login', indexController.login_get );
 
 //handling login logic
 router.post("/login", passport.authenticate("local",  {
-                                   failureRedirect: '/login' }), function(req, res){
+                                   failureRedirect: '/login', failureFlash: 'Invalid username or password.' }), function(req, res){
 		 var foundUser = User.findOne({username : req.body.username}).populate("foundUser").exec(function(err, foundUser){
         if(err || !foundUser){
             console.log(err);
-            //req.flash('error', 'Sorry, No User exists with UserName ' + req.params.username);
-            res.redirect('/login', {error : 'Sorry, No User exists with UserName '});
         }
         /*if(foundUser.verified === false )
 		{
@@ -24,10 +22,11 @@ router.post("/login", passport.authenticate("local",  {
 
 		}*/
 
-		//req.flash("success", "Hi User " + foundUser.username);
+		req.flash("success", "Hi User " + foundUser.username);
         res.redirect("/");
     });
 });
+
 
 router.get('/register', indexController.register_get);
 

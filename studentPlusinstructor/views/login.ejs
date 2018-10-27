@@ -11,6 +11,7 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
   <% include ./partials/icons %>
+
   <link rel="stylesheet" href="stylesheets/login.css">
 </head>
 
@@ -24,8 +25,10 @@
     <a href="/courses">Course Structure</a>
     <a href="#">Our Demo</a>
     <a href="#">About Us</a>
-  </header>
+    <% include ./partials/loginbutton %>
 
+  </header>
+<% include ./partials/flash_bt3 %>
   <div class="main">
     <div class="login-form">
       <div class="main-div">

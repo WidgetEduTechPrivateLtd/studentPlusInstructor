@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile - Widget EduTech</title>
+  <% include ./partials/bootstrap4 %>
+  <% include ./partials/icons %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/instructorProfile.css" media="all">
+  <script src="/javascripts/instructorProfile.js" charset="utf-8"></script>
+</head>
+<body>
+
+    <div class="container-fluid">
+    <div class="row">
+      <header>
+        <a id="logo" href="/"><img src="images/headerLogo.png" alt="WidgetEduTech Logo"></a>
+        <a href="/">Home</a>
+        <a href="/courses">Course Structure</a>
+        <a href="#">Our Demo</a>
+        <a href="#">About Us</a>
+
+        <% include ./partials/loginbutton %>
+
+      </header>
+    </div>
+<% include ./partials/flash_bt4 %>
+    <div class="row">
+
+<!-- Start navbar -->
+<div class="side-nav">
+  <button class="dropdown-btn">Courses <!--<i class="fas fa-caret-down"></i>-->
+  </button>
+  <div class="dropdown-container">
+    <button class="dropdown-btn-class">Class 9 <i class="fas fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container-class">
+      <a href="#9Maths">Maths</a>
+      <a href="#9Physics">Physics</a>
+      <a href="#9Chemistry">Chemistry</a>
+      <a href="#9Biology">Biology</a>
+    </div>
+
+    <button class="dropdown-btn-class">Class 10 <i class="fas fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container-class">
+      <a href="#10maths">Maths</a>
+      <a href="#10Physics">Physics</a>
+      <a href="#10Chemistry">Chemistry</a>
+      <a href="#10Biology">Biology</a>
+    </div>
+
+    <button class="dropdown-btn-class">Class 11 <i class="fas fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container-class">
+      <a href="#11maths">Maths</a>
+      <a href="#11Physics">Physics</a>
+      <a href="#11Chemistry">Chemistry</a>
+      <a href="#11Biology">Biology</a>
+    </div>
+
+    <button class="dropdown-btn-class">Class 12 <i class="fas fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container-class">
+      <a href="#12maths">Maths</a>
+      <a href="#12Physics">Physics</a>
+      <a href="#12Chemistry">Chemistry</a>
+      <a href="#12Biology">Biology</a>
+    </div>
+    <!--add class and subjects-->
+  </div>
+  <button class="dropdown-btn-live"><i class="fas fa-circle"></i> Live <!--<i class="fas fa-caret-down"></i>--></button>
+  <div class="dropdown-container-live">
+    <a href="#Schedule">Schedule <i class="fas fa-calendar-alt"></i></a>
+    <a href="#notify">Notify <i class="fas fa-bullhorn"></i></a>
+    <a href="#pending">Pending <i class="fas fa-exclamation-circle"></i></a>
+  </div>
+  <a href="/instructor/my-profile"><i class="fas fa-user"></i>   Profile</a>
+  <a href="/instructor/settings"><i class="fas fa-cog"></i>Settings</a>
+</div>
+<!-- End Navbar -->
+<!-- Start main space -->
+<div class="main">
+
+</div>
+<!--End main space -->
+
+    </div>
+    <div class="row">
+      <div class="botNav">
+        <a href="#">Our Blog</a>
+        <a href="#">Contact</a>
+        <% include ./partials/loginbutton %>
+        <!--<a href="/student/registerInstructor" id="registerInstructor">An instructor? Join us!</a>-->
+      </div>
+    </div>
+    <div class="row">
+      <footer>
+        ALL RIGHTS RESERVED
+      </footer>
+    </div>
+  </div>
+
+</body>

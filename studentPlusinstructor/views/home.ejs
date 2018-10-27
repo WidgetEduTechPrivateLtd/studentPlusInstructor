@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <div class="container-fluid mw-100">
+    <div class="container-fluid">
     <div class="row">
       <header>
         <a id="logo" href="/"><img src="images/headerLogo.png" alt="WidgetEduTech Logo"></a>
@@ -18,9 +18,12 @@
         <a href="/courses">Course Structure</a>
         <a href="#">Our Demo</a>
         <a href="#">About Us</a>
+
+        <% include ./partials/loginbutton %>
+
       </header>
     </div>
-
+<% include ./partials/flash_bt4 %>
     <div class="row">
       <div class="main">
        HOMEPAGE
@@ -30,6 +33,7 @@
       <div class="botNav">
         <a href="#">Our Blog</a>
         <a href="#">Contact</a>
+        <% include ./partials/loginbutton %>
         <a href="/student/registerInstructor" id="registerInstructor">An instructor? Join us!</a>
       </div>
     </div>

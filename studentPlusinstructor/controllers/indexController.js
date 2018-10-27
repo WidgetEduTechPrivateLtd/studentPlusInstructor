@@ -81,6 +81,42 @@ exports.register_get = function(req, res) {
 };
 
 exports.newUserRegister_post = function(req, res){
+
+			 var foundUser = user.findOne({username : req.body.username}).populate("foundUser").exec(function(err, foundUser){
+        if(err || !foundUser){
+            console.log(err);
+        }
+        /*if(foundUser.verified === false )
+		{
+			console.log("User not verified later!");
+			return res.render("verify", {username: foundUser.username});
+
+		}*/
+		if(foundUser != null)
+		{
+			console.log("user with given username found");
+		req.flash("error", "User Already Exists " + foundUser.username);
+        res.redirect("/register");
+		}
+    });
+	 foundUser = user.findOne({email : req.body.email}).populate("foundUser").exec(function(err, foundUser){
+        if(err || !foundUser){
+            console.log(err);
+        }
+        /*if(foundUser.verified === false )
+		{
+			console.log("User not verified later!");
+			return res.render("verify", {username: foundUser.username});
+
+		}*/
+		if(foundUser != null)
+		{
+			console.log("user with given username found");
+		req.flash("error", "User Already Exists " + foundUser.email);
+        res.redirect("/register");
+		}
+    });
+
   var newUser = new user(
     {
       email: req.body.emailConfirm,
@@ -128,30 +164,7 @@ exports.newUserRegister_post = function(req, res){
   });
 };
 
-exports.login_post = function (req,res) {
-	console.log("method started");
-	console.log(req.body.username);
-	passport.authenticate("local",  {
-                                   failureRedirect: '/login' }),
-								   function getUser (req, res){
-		 var foundUser = user.findOne({userName : req.body.username}).populate("foundUser").exec(function(err, foundUser){
-        if(err || !foundUser){
-            console.log(err);
-            req.flash('error', 'Sorry, No User exists with UserName ' + req.params.username);
-            res.redirect('/login', {error : 'Sorry, No User exists with UserName '});
-        }
-        /*if(foundUser.verified === false )
-		{
-			console.log("User not verified later!");
-			return res.render("verify", {username: foundUser.username});
-
-		}*/
-
-		req.flash("success", "Hi User " + foundUser.username);
-        res.redirect("/homePage");
-    });
-}
-};
+//exports.login_post = 
 
 exports.courseStructure = function(req, res) {
   res.render('courseStructure');
