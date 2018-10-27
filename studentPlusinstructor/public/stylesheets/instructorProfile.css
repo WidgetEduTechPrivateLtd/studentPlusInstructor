@@ -3,6 +3,7 @@ header {
   background-color: #d9d9d9;
   height: 100%;
   text-align: center;
+  display: block;
 }
 
 header a {
@@ -48,6 +49,7 @@ header #logo img {
   background-color: #d9d9d9;
   height: 100%;
   padding: 0px;
+  display: block;
 }
 
 .botNav>a {
@@ -83,14 +85,16 @@ footer {
   font-size: 16px;
   padding: 0px;
   padding-bottom: 3px;
+  display: block;
+  bottom: 0;
 }
 
 .side-nav {
   height: 100%;
   width: 200px;
   position: absolute;
-  z-index: 1;
-  top: 0;
+  z-index: -1;
+
   left: 0;
   background-color: #111;
   overflow-x: hidden;
@@ -166,5 +170,12 @@ footer {
 .main {
   margin-left: 200px;
   font-size: 20px;
-  padding: 0px 10px;
+  width: 85%;
+  padding: 20px;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+
 }
